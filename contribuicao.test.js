@@ -1,3 +1,7 @@
+// Pin a zone with a non-zero offset so the §7 test can tell local getters from UTC ones
+// even on UTC machines (this one and GitHub's runners). Node re-reads TZ at runtime.
+process.env.TZ = "America/Sao_Paulo";
+
 import assert from "node:assert/strict";
 import { test } from "node:test";
 import {
