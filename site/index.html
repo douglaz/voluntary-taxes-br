@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Quero Pagar Mais — contribuição voluntária ao Fundo de Combate e Erradicação da Pobreza</title>
+  <meta name="description" content="Faça uma contribuição voluntária ao Fundo de Combate e Erradicação da Pobreza pelo PagTesouro, o sistema de pagamentos do Tesouro Nacional.">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="styles.css">
+  <script type="module" src="main.js"></script>
+</head>
+<body>
+  <main>
+    <header>
+      <h1>Quero Pagar Mais</h1>
+      <p class="lead">Faça uma contribuição voluntária ao Brasil</p>
+      <p>Quer contribuir além dos impostos que você já paga? Envie qualquer valor diretamente ao Fundo de Combate e Erradicação da Pobreza, pelo PagTesouro, o sistema de pagamentos do Tesouro Nacional.</p>
+    </header>
+
+    <noscript>
+      <p class="aviso">Este site precisa de JavaScript para montar o link do PagTesouro. Sem ele, siga as <a href="https://www.gov.br/mds/pt-br/acesso-a-informacao/receita-e-despesas/doacoes-ao-fundo-de-combate-e-erradicacao-da-pobreza">instruções oficiais do MDS</a>.</p>
+    </noscript>
+
+    <form id="contribuicao" novalidate>
+      <div class="rapidos" aria-label="Valores sugeridos">
+        <button type="button" data-valor="10">R$ 10</button>
+        <button type="button" data-valor="50">R$ 50</button>
+        <button type="button" data-valor="100">R$ 100</button>
+        <button type="button" data-valor="500">R$ 500</button>
+      </div>
+
+      <label for="valor">Valor (R$)</label>
+      <input id="valor" name="valor" type="text" inputmode="decimal" autocomplete="off" aria-describedby="erro eco">
+      <p id="erro" class="erro"></p>
+      <p id="eco" class="eco" aria-live="polite"></p>
+
+      <button id="continuar" type="submit" class="cta">Continuar no PagTesouro</button>
+    </form>
+
+    <section class="aviso">
+      <p>Você será levado ao site oficial pagtesouro.tesouro.gov.br. Lá, digite seu nome e escolha como pagar. O valor e o número de referência chegam preenchidos e não podem ser alterados lá — para mudar o valor, volte a esta página.</p>
+      <p>Este site não recebe, não intermedeia e não armazena seu dinheiro.</p>
+    </section>
+
+    <hr>
+
+    <section class="destino">
+      <h2>Para onde vai o dinheiro?</h2>
+      <p>Fundo de Combate e Erradicação da Pobreza<br>
+      Ministério do Desenvolvimento e Assistência Social, Família e Combate à Fome<br>
+      Órgão 55000 · UG 550008 · Serviço 018235</p>
+      <p>No PagTesouro, confira estas linhas (como aparecem lá, abreviadas):</p>
+      <ul class="linhas">
+        <li>55000 - MIN.DESENV.E ASSIT.SOCIAL,FAM.E COMBATE FOME</li>
+        <li>550008 - SECRETARIA NAC. DE SEGUR. ALIMENTAR E NUTRIC.</li>
+        <li>018235 - DOAÇÕES AO FUNDO DE COMBATE E ERRADIC. DA POBREZA</li>
+      </ul>
+      <p><a href="https://www.gov.br/mds/pt-br/acesso-a-informacao/receita-e-despesas/doacoes-ao-fundo-de-combate-e-erradicacao-da-pobreza">Instruções oficiais do MDS</a></p>
+    </section>
+
+    <hr>
+
+    <footer>
+      <p>Este é um site independente, sem vínculo, afiliação ou endosso do Governo Federal. O pagamento é feito diretamente no PagTesouro, serviço oficial da Secretaria do Tesouro Nacional.</p>
+      <p>A contribuição é voluntária e não substitui nenhum imposto ou obrigação tributária.</p>
+      <p>Privacidade: este site não usa cookies nem analytics e não pede dados pessoais. Como qualquer site, o provedor de hospedagem (Cloudflare) registra dados técnicos de acesso, como o endereço IP.</p>
+      <p><a href="https://github.com/douglaz/voluntary-taxes-br">Código aberto</a> · <a href="mailto:problema@queropagarmais.com">Avise um problema</a></p>
+    </footer>
+  </main>
+</body>
+</html>
