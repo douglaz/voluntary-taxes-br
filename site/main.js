@@ -41,7 +41,12 @@ field.addEventListener("input", () => {
   updateEcho();
 });
 
-window.addEventListener("pageshow", updateEcho);
+// A page restored from the bfcache after the §6.4 navigation requires confirmation again.
+window.addEventListener("pageshow", () => {
+  disarm();
+  clearError();
+  updateEcho();
+});
 
 for (const button of form.querySelectorAll("button[data-valor]")) {
   button.addEventListener("click", () => {

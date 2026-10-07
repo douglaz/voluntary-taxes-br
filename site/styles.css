@@ -2,6 +2,7 @@
   --texto: #1f2a24;
   --fundo: #fbfcf9;
   --borda: #c8d1cb;
+  --borda-campo: #767e79; /* 4.17:1 on #fff, 4.05:1 on --fundo (WCAG 1.4.11 needs 3:1) */
   --acento: #1b6b3a;
   --acento-escuro: #124a28;
   --erro: #a3200e;
@@ -99,7 +100,7 @@ input {
   width: 100%;
   min-height: 44px;
   padding: 0.5rem 0.75rem;
-  border: 2px solid var(--borda);
+  border: 2px solid var(--borda-campo);
   border-radius: 8px;
   background: #fff;
   color: var(--texto);
