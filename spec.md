@@ -180,7 +180,7 @@ The amount is held internally as an integer number of **centavos**. Never use bi
 |---|---|
 | empty or zero | Informe um valor maior que R$ 0,00. |
 | bad charset or format, bad grouping | Valor inválido. Exemplos: 50, 10,50 ou 1.000,00. |
-| 3 decimals (locale decided) or 4+ digits after the only separator | Use no máximo duas casas decimais (ex.: 10,50) ou escreva sem pontos (ex.: 1000). |
+| 3 decimals (locale decided), 4+ digits after the only separator, or 3+ digits after the decimal separator when both separators are present (`1.000,500`) | Use no máximo duas casas decimais (ex.: 10,50) ou escreva sem pontos (ex.: 1000). |
 | above the cap | Valor acima do máximo aceito pelo PagTesouro. |
 
 Errors show only on submit. While the contributor is typing, an unparseable value just blanks the echo. Inputs like `10,` or `1.` must not flash an error mid-typing.
