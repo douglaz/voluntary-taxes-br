@@ -269,7 +269,8 @@ window.location.assign(`${BASE}?${params}`)
 │   ├── favicon.svg
 │   └── _headers
 ├── contribuicao.test.js      node --test (imports ./site/contribuicao.js)
-├── .github/workflows/drift.yml
+├── .github/workflows/drift.yml   calls scripts/drift.sh
+├── scripts/drift.sh          §11 checks 1–2; runnable locally: scripts/drift.sh [servico]
 ├── docs/                     adr/, pagtesouro-observations.md, pagtesouro-baseline/
 ├── .gitignore                includes .context/ and .gstack/
 ├── LICENSE
@@ -319,10 +320,13 @@ curl -fsS --retry 3 --retry-all-errors -m 30 \
 jq -e '.codigoServico == "018235"
   and .nomeServico == "DOAÇÕES AO FUNDO DE COMBATE E ERRADIC. DA POBREZA"
   and .codigoOrgao == "55000"
+  and .tituloOrgao == "MIN.DESENV.E ASSIT.SOCIAL,FAM.E COMBATE FOME"
+  and .codigoUg == "550008"
+  and .tituloUg == "SECRETARIA NAC. DE SEGUR. ALIMENTAR E NUTRIC."
   and .cpfCnpjContribuinteObrigatorio == false' s.json
 ```
 
-- **Also assert** the UG code `550008` and the Órgão and UG titles quoted in §5.1. Take the exact field names (`tituloOrgao`, the UG code and title fields) from the live response when implementing.
+- **Field names** are from the live response of 2026-10-07: `codigoOrgao`, `tituloOrgao`, `codigoUg`, `tituloUg`, `codigoServico`, `nomeServico`, `numeroReferenciaObrigatorio`, `cpfCnpjContribuinteObrigatorio`. The titles are the strings quoted in §5.1, so copy that drifts out of date also fails this check.
 - **Retirement:** a retired service returns `404` with `C0005 Serviço inexistente`, which makes `curl -f` fail.
 - **Not asserted:** `numeroReferenciaObrigatorio`. If it flipped, nothing would break.
 
