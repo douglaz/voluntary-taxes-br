@@ -1,0 +1,3 @@
+# A `.com` domain, not `.com.br`, to keep the owner's CPF and email out of whois
+
+The page itself names no person, though its "Código aberto" link leads to the source on the owner's existing GitHub, so who runs it can be found on purpose. A `.com.br` would publish more: registro.br's public whois shows the holder's name, a partly masked CPF and an email. So the domain is `queropagarmais.com` (if available), registered through Cloudflare Registrar, which redacts whois where the TLD allows (state/province and country stay public). The cost is the "Brazilian site" signal of `.br`, which the Portuguese copy and the `gov.br` handoff carry instead. Moving to `.com.br` later would also mean breaking every shared link and QR code.
