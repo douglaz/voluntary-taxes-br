@@ -17,7 +17,7 @@ Quero Pagar Mais: a static page that sends a person to PagTesouro with a pre-fil
 ## Commits
 
 - Conventional commits: `type(scope): subject`.
-- Never mention Claude, AI, assistants or any tool in commit messages, code comments or docs, and add no `Co-Authored-By` trailers for them.
+- Commit messages, code comments and docs describe the change on its merits: no tool or assistant attributions, no `Co-Authored-By` trailers.
 - `.context/` and `.gstack/` are local scratch and are git-ignored; never commit them.
 
 <!-- agent-discipline-v1 -->
