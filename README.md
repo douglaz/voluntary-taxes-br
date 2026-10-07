@@ -47,7 +47,8 @@ Confirme ou troque:
 ## Configuração manual (dono do projeto)
 
 1. **GitHub.** Crie o repositório público, faça o push deste branch e confira que o workflow
-   `drift` aparece em Actions. Em Settings → Notifications → Actions → Email, marque
+   `drift` aparece em Actions. Depois, nas configurações da sua conta no GitHub
+   (github.com/settings/notifications), em Notifications → Actions → Email, marque
    "Only notify for failed workflows" (vem desligado).
 2. **Cloudflare Pages.** Crie um projeto a partir do repositório: framework preset "None", sem
    build command, output directory `site/`. Os cabeçalhos de `site/_headers` são aplicados
@@ -61,7 +62,9 @@ Confirme ou troque:
    caixa.
 6. **Heartbeat.** Em healthchecks.io, crie um check com período de 1 dia e grace de 1 dia e
    guarde a URL de ping no secret `HC_PING_URL` do repositório (Settings → Secrets and
-   variables → Actions).
+   variables → Actions). Enquanto o secret `HC_PING_URL` não existir, o passo Heartbeat do
+   workflow falha (`curl` com URL vazia sai com código 2): crie o secret antes da primeira
+   execução agendada ou espere e-mails de falha até lá.
 7. **Cabeçalhos.** Depois de cada deploy:
 
    ```sh
@@ -72,26 +75,27 @@ Confirme ou troque:
 
 ## Checklist de lançamento (manual; bloqueia o lançamento)
 
-1. **Headers.** Deploy, then `curl -sI` on the domain shows every header in `site/_headers`,
-   and `*.pages.dev` redirects to the domain.
-2. **Real contribution.** On a phone, from the **deployed** page, contribute about R$ 1 (not
-   refundable) through the site-generated URL:
-   - PagTesouro shows the three lines of the "Para onde vai o dinheiro?" block exactly.
-   - The Referência and amount are filled in and locked.
-   - The name field is empty and editable.
-   - No CPF is required.
-3. **Payment.** Click "Iniciar Pagamento" and confirm:
-   - the server accepts the locked values;
-   - Pix is offered, with copia-e-cola for paying on the same phone.
+1. **Cabeçalhos.** Depois do deploy, `curl -sI` no domínio mostra todos os cabeçalhos de
+   `site/_headers`, e `*.pages.dev` redireciona para o domínio.
+2. **Contribuição real.** Num celular, a partir da página **publicada**, contribua cerca de
+   R$ 1 (não reembolsável) pela URL gerada pelo site:
+   - o PagTesouro mostra exatamente as três linhas do bloco "Para onde vai o dinheiro?";
+   - a Referência e o valor vêm preenchidos e travados;
+   - o campo de nome está vazio e editável;
+   - nenhum CPF é exigido.
+3. **Pagamento.** Clique em "Iniciar Pagamento" e confirme:
+   - o servidor aceita os valores travados;
+   - o Pix é oferecido, com copia-e-cola para pagar no mesmo celular.
 
-   Complete the payment. Then update "escolha como pagar" with the methods actually offered.
-4. **Baseline.** Record the API JSON and the `main-*.js` and `chunk-*.js` file names of that
-   day, and commit them under `docs/pagtesouro-baseline/`. They are public data. That way a
-   later drift alarm can be compared against the verified version.
-5. **Alert path.** Run the drift workflow with `servico=999999`, confirm the failure email
-   arrives, then run it normally and confirm healthchecks.io received the ping.
-6. **Keypads.** Type amounts on a real iPhone and a real Android phone, each with Portuguese
-   and English language/region settings, and confirm the results of spec §6.5 and the echo.
+   Conclua o pagamento. Depois atualize "escolha como pagar" com os meios realmente oferecidos.
+4. **Linha de base.** Registre o JSON da API e os nomes dos arquivos `main-*.js` e `chunk-*.js`
+   daquele dia e faça commit deles em `docs/pagtesouro-baseline/`. São dados públicos. Assim
+   um alarme de drift posterior pode ser comparado com a versão verificada.
+5. **Caminho do alerta.** Execute o workflow de drift com `servico=999999`, confirme que o
+   e-mail de falha chega, depois execute normalmente e confirme que o healthchecks.io recebeu
+   o ping.
+6. **Teclados.** Digite valores num iPhone e num Android reais, cada um com idioma/região em
+   português e em inglês, e confirme os resultados da spec §6.5 e o eco.
 
 ## Licença
 
