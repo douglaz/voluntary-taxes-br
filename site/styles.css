@@ -1,0 +1,171 @@
+:root {
+  --texto: #1f2a24;
+  --fundo: #fbfcf9;
+  --borda: #c8d1cb;
+  --borda-campo: #767e79; /* 4.17:1 on #fff, 4.05:1 on --fundo (WCAG 1.4.11 needs 3:1) */
+  --acento: #1b6b3a;
+  --acento-escuro: #124a28;
+  --erro: #a3200e;
+  --foco: #0b57d0;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  font-size: 1.0625rem;
+  line-height: 1.5;
+  color: var(--texto);
+  background: var(--fundo);
+}
+
+body {
+  margin: 0;
+  padding: 1.5rem 1rem 3rem;
+}
+
+main {
+  max-width: 640px;
+  min-width: 288px;
+  margin: 0 auto;
+}
+
+h1 {
+  text-align: center;
+  font-size: 2rem;
+  margin: 0 0 0.5rem;
+}
+
+h2 {
+  font-size: 1.25rem;
+  margin: 1.5rem 0 0.5rem;
+}
+
+.lead {
+  text-align: center;
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin: 0 0 1rem;
+}
+
+a {
+  color: var(--acento-escuro);
+  text-decoration: underline;
+}
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible {
+  outline: 3px solid var(--foco);
+  outline-offset: 2px;
+}
+
+form {
+  margin: 1.5rem 0;
+}
+
+.rapidos {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(5.5rem, 1fr));
+  gap: 0.5rem;
+  margin-bottom: 1.25rem;
+}
+
+button {
+  font: inherit;
+  min-height: 44px;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  border: 2px solid var(--acento);
+  background: #fff;
+  color: var(--acento-escuro);
+  cursor: pointer;
+}
+
+button:hover {
+  background: #eef5ef;
+}
+
+label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+}
+
+input {
+  font: inherit;
+  font-size: 1.5rem;
+  width: 100%;
+  min-height: 44px;
+  padding: 0.5rem 0.75rem;
+  border: 2px solid var(--borda-campo);
+  border-radius: 8px;
+  background: #fff;
+  color: var(--texto);
+}
+
+input[aria-invalid="true"] {
+  border-color: var(--erro);
+}
+
+.erro {
+  color: var(--erro);
+  font-weight: 600;
+  margin: 0.5rem 0 0;
+}
+
+.erro:empty {
+  display: none;
+}
+
+.eco {
+  min-height: 1.5rem;
+  margin: 0.5rem 0 1rem;
+  font-weight: 600;
+}
+
+.cta {
+  width: 100%;
+  min-height: 52px;
+  font-size: 1.125rem;
+  font-weight: 600;
+  background: var(--acento);
+  color: #fff;
+}
+
+.cta:hover {
+  background: var(--acento-escuro);
+}
+
+.aviso {
+  font-size: 0.95rem;
+}
+
+hr {
+  border: 0;
+  border-top: 1px solid var(--borda);
+  margin: 2rem 0;
+}
+
+.linhas {
+  font-family: ui-monospace, Menlo, Consolas, monospace;
+  font-size: 0.9rem;
+  padding-left: 1.25rem;
+}
+
+footer {
+  font-size: 0.9rem;
+}
+
+@media (min-width: 480px) {
+  .cta {
+    width: auto;
+    min-width: 50%;
+  }
+
+  .rapidos {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
